@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'rack/contrib'
-require 'rack-rewrite'
-
+require 'rack/rewrite'
 use Rack::Rewrite do
-  rewrite %r{^/(.*)}, 'http://www.weather.com/search/enhancedlocalsearch?where=$1'
+  r301 %r{/(.*)}, 'http://www.weather.com/search/enhancedlocalsearch?where=$&'
 end
